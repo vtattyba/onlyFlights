@@ -1,0 +1,80 @@
+h1 {
+  font-size:60px;
+  font-family:"monospace";
+  color: black;
+  margin:4px;
+  outline: black;
+  width: 84%;
+  outline-style: solid;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.body1{
+  background-image: url("travel.jpg");
+  background-size:cover;
+}
+
+input[type="text"] {
+  font-size: 20px;
+  padding: 8px 2.5px;
+  font-family: "monospace";
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+
+}
+input[type="date"] {
+  font-size: 20px;
+  padding: 5.5px 2px;
+  font-family: "monospace";
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+
+}
+
+input[type=submit] {
+  padding: 10px 16px;
+  border: 0;
+  font-size: 20px;
+  background: linear-gradient(to right, #4d86db 0%,#7de9da 100%); 
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  letter-spacing: 1px;
+  font-family: "monospace";
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+
+}
+
+input[type=submit]:hover {
+  background-color: white;
+  color: white;  
+}
+
+form { 
+  width: 1400px;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.myClass {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+}
+.flightClass{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.card{
+  margin: 4px 0;
+}
+
+
+
+

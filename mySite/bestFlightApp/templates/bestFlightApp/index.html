@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <title>Best Domestic Flights</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+   </head>
+   <body class="body1">
+   {{myVar}}
+      <center>
+         <div class="container">
+            <h1>Domestic Flights</h1>
+            <form method="POST" action="{% url 'prices'%}" id="form_id">
+               {% csrf_token %}
+               <input type="text" pattern="[a-zA-Z ]+" name="departureCity" id="inputDepartureCity" placeholder="From: City/Airport" required>
+               <input type="text" pattern="[a-zA-Z ]+" name="destinationCity" id="inputDestinationCity" placeholder="To: City/Airport" required>
+               <input type="text" pattern="[1-9]+" name="numPassengers" id="inputNumPassengers" placeholder="# Passengers" required>
+               <input type="date" name="departureDate" id="idDepartureDate" required>
+               <input type="submit" name="Submit" value="Submit" />
+            </form>
+         </div>
+      </center>
+   </body>
+</html>

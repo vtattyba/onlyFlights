@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Best Flight Prices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<!-- Making 5 cards to display the top 5 search results -->
+<body style="background-color: black;">
+  <a class="btn btn-light" href="{% url 'index'%}" role="button" style="width: 100%; font-size: 40px; font-weight: bold;">New Search</a>
+  <div class="myClass">
+    <div class="card">
+      <div class="card-body border-dark mb-3">
+        <div class="card-title flightClass">
+          <!-- Pulling the information from the get request and dynmically translating it to html -->
+          <!-- Have to do the first and the last as  there might be a connecting flight -->
+          <h3>{{ flight0.departureTimeIataCode|first }} - {{ flight0.arrivalTimeIataCode|last }} </h3>
+          <h3>{{ flight0.departureTime|first }} - {{ flight0.arrivalTime|last }} (MT)</h3>
+          <h3>Travel Time: {{ flight0.totTime }}</h3>
+          <h3>Layovers: {{ flight0.layovers }} {{ flight0.layoverLoc }}</h3>
+          <h3>Price(w/Tax): ${{ flight0.totPrice }} </h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <!-- Drop down to keep things organized -->
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  More Info
+                </button>
+              </h2>
+            </div>
+            <!-- Displaying additional information from secondary get request, price analysis tool -->
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="flightClass">
+                  <b>Cheapest Price: ${{ flight0.cheapestPrice }}</b>
+                  <b>Average Price: ${{ flight0.averagePrice }}</b>
+                  <b>Expensive Price: ${{ flight0.expensivePrice }}</b>
+                  <b>Deal Analysis: {{ flight0.deal }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Comments are identical as first card -->
+    <div class="card">
+      <div class="card-body border-dark mb-3">
+        <div class="card-title flightClass">
+          <h3>{{ flight1.departureTimeIataCode|first }} - {{ flight1.arrivalTimeIataCode|last }} </h3>
+          <h3>{{ flight1.departureTime|first }} - {{ flight1.arrivalTime|last }} (MT)</h3>
+          <h3>Travel Time: {{ flight1.totTime }}</h3>
+          <h3>Layovers: {{ flight1.layovers }} {{ flight1.layoverLoc }}</h3>
+          <h3>Price(w/Tax): ${{ flight1.totPrice }} </h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  More Info
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="flightClass">
+                  <b>Cheapest Price: ${{ flight1.cheapestPrice }}</b>
+                  <b>Average Price: ${{ flight1.averagePrice }}</b>
+                  <b>Expensive Price: ${{ flight1.expensivePrice }}</b>
+                  <b>Deal Analysis: {{ flight1.deal }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Comments are identical as first card -->
+    <div class="card">
+      <div class="card-body  border-dark mb-3">
+        <div class="card-title flightClass">
+          <h3>{{ flight2.departureTimeIataCode|first }} - {{ flight2.arrivalTimeIataCode|last }} </h3>
+          <h3>{{ flight2.departureTime|first }} - {{ flight2.arrivalTime|last }} (MT)</h3>
+          <h3>Travel Time: {{ flight2.totTime }}</h3>
+          <h3>Layovers: {{ flight2.layovers }} {{ flight2.layoverLoc }}</h3>
+          <h3>Price(w/Tax): ${{ flight2.totPrice }} </h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  More Info
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+              data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="flightClass">
+                  <b>Cheapest Price: ${{ flight2.cheapestPrice }}</b>
+                  <b>Average Price: ${{ flight2.averagePrice }}</b>
+                  <b>Expensive Price: ${{ flight2.expensivePrice }}</b>
+                  <b>Deal Analysis: {{ flight2.deal }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Comments are identical as first card -->
+    <div class="card">
+      <div class="card-body border-dark mb-3">
+        <div class="card-title flightClass">
+          <h3>{{ flight3.departureTimeIataCode|first }} - {{ flight3.arrivalTimeIataCode|last }} </h3>
+          <h3>{{ flight3.departureTime|first }} - {{ flight3.arrivalTime|last }} (MT)</h3>
+          <h3>Travel Time: {{ flight3.totTime }}</h3>
+          <h3>Layovers: {{ flight3.layovers }} {{ flight3.layoverLoc }}</h3>
+          <h3>Price(w/Tax): ${{ flight3.totPrice }} </h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                  More Info
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="flightClass">
+                  <b>Cheapest Price: ${{ flight3.cheapestPrice }}</b>
+                  <b>Average Price: ${{ flight3.averagePrice }}</b>
+                  <b>Expensive Price: ${{ flight3.expensivePrice }}</b>
+                  <b>Deal Analysis: {{ flight3.deal }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Comments are identical as first card -->
+    <div class="card">
+      <div class="card-body border-dark mb-3">
+        <div class="card-title flightClass">
+          <h3>{{ flight4.departureTimeIataCode|first }} - {{ flight4.arrivalTimeIataCode|last }} </h3>
+          <h3>{{ flight4.departureTime|first }} - {{ flight4.arrivalTime|last }} (MT)</h3>
+          <h3>Travel Time: {{ flight4.totTime }}</h3>
+          <h3>Layovers: {{ flight4.layovers }} {{ flight4.layoverLoc }}</h3>
+          <h3>Price(w/Tax): ${{ flight4.totPrice }} </h3>
+        </div>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                  data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                  More Info
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="flightClass">
+                  <b>Cheapest Price: ${{ flight4.cheapestPrice }}</b>
+                  <b>Average Price: ${{ flight4.averagePrice }}</b>
+                  <b>Expensive Price: ${{ flight4.expensivePrice }}</b>
+                  <b>Deal Analysis: {{ flight4.deal }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- <h1>{{ test }} {{ test1 }}</h1> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
